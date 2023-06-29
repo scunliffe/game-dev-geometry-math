@@ -7,6 +7,17 @@ public static bool distance(Vector2 point1, Vector2 point2){
 	return Vector2.Distance(point1, point2);
 }
 
+public static float getAngleBetweenLines(Vector2 line1Start, Vector2 line1End, Vector2 line2Start, Vector2 line2End){
+	Vector2 line1Dir = (line1End - line1Start).normalized;
+	Vector2 line2Dir = (line2End - line2Start).normalized;
+	float angle = Mathf.Atan2(line2Dir.y, line2Dir.x) - Mathf.Atan2(line1Dir.y, line1Dir.x);
+	angle *= Mathf.Rad2Deg;
+	if(angle < 0){
+		angle += 360;
+	}
+	return angle;
+}
+
 public static Vector2 getNormalOfLine(Vector2 point1, Vector2 point2){
 	Vector2 direction = point2 - point1;
 	return new Vector2(-direction.y, direction.x).normalized;
