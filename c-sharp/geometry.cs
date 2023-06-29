@@ -278,3 +278,41 @@ public static SideOfPlane getPointSideOfPlane(Vector3 point, Plane plane){
 		return SideOfPlane.Below;
 	}
 }
+
+public static Mesh createFourSidedTriangularMesh(Vector3 point1, Vector3 point2, Vector3 point3, Vector3 point4){
+	Vector3[] vertices = new Vector3[4];
+	vertices[0] = point1;
+	vertices[1] = point2;
+	vertices[2] = point3;
+	vertices[3] = point4;
+
+	int[] triangles = new int[6];
+	triangles[0] = 0;
+	triangles[1] = 1;
+	triangles[2] = 2;
+	triangles[3] = 2;
+	triangles[4] = 3;
+	triangles[5] = 0;
+
+	Mesh mesh = new Mesh();
+	mesh.vertices = vertices;
+	mesh.triangles = triangles;
+
+	GameObject quad = new GameObject("Quad");
+	MeshFilter meshFilter = quad.AddComponent<MeshFilter>();
+	meshFilter.mesh = mesh;
+
+	MeshRenderer meshRenderer = quad.AddComponent<MeshRenderer>();
+	return mesh;
+}
+
+public static Mesh CombineMeshes(Mesh[] meshes){
+	CombineInstance[] combine = new CombineInstance[meshes.Length];
+	for(int i=0;i<meshes.Length;i++){
+		combine[i].mesh = meshes[i];
+		combine[i].transform = Matrix4x4.identity;
+	}
+	Mesh mesh = new Mesh();
+	mesh.CombineMeshes(combine);
+	return mesh;
+}
