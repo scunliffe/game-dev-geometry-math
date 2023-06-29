@@ -127,6 +127,11 @@ public static Vector3 getMidpoint(Vector3 point1, Vector3 point2){
 	return (point1 + point2) / 2f;
 }
 
+// TODO: add validation to ensue lerpDistance is not greater than 1
+public static Vector3 getLerpedPointOnLine(Vector3 startPoint, Vector3 endPoint, float lerpDistance){
+	return Vector3.Lerp(startPoint, endPoint, lerpDistance);
+}
+
 public static bool isPointOnLine3D(Vector3 point, Vector3 lineStart, Vector3 lineEnd){
 	float epsilon = 0.0001f;
 	float dx = lineEnd.x - lineStart.x;
