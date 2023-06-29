@@ -7,6 +7,10 @@ public static bool distance(Vector2 point1, Vector2 point2){
 	return Vector2.Distance(point1, point2);
 }
 
+public static Vector3 getMidpoint(Vector2 point1, Vector2 point2){
+	return (point1 + point2) / 2f;
+}
+
 public static float getAngleBetweenLines(Vector2 line1Start, Vector2 line1End, Vector2 line2Start, Vector2 line2End){
 	Vector2 line1Dir = (line1End - line1Start).normalized;
 	Vector2 line2Dir = (line2End - line2Start).normalized;
@@ -82,6 +86,10 @@ public static bool isPointInsideRect(Vector2 point, Rect rect){
 
 public static float distance(Vector3 point1, Vector3 point2){
 	return Vector3.Distance(point1, point2);
+}
+
+public static Vector3 getMidpoint(Vector3 point1, Vector3 point2){
+	return (point1 + point2) / 2f;
 }
 
 public static bool isPointOnLine3D(Vector3 point, Vector3 lineStart, Vector3 lineEnd){
