@@ -137,3 +137,21 @@ public static Vector2 getLineIntersection(Vector2 line1Start, Vector2 line1End, 
 public static bool doLinesIntersect(Vector2 line1Start, Vector2 line1End, Vector2 line2Start, Vector2 line2End){
 	return (getLineIntersection(line1Start, line1End, line2Start, line2End) != null);
 }
+
+public static Plane createPlaneFromPoints(Vector3 point1, Vector3 point2, Vector3 point3){
+	Vector3 side1 = point2 - point1;
+	Vector3 side2 = point3 - point1;
+	Vector3 normal = Vector3.Cross(side1, side2).normalized;
+
+	return new Plane(normal, point1);
+}
+
+public static bool isPointOnPlane(Vector3 point, Vector3 planeNormal, Vector3 planePoint){
+	float distance = Vector3.Dot(planeNormal, (point - planePoint));
+	return Mathf.Approximately(distance, 0);
+}
+
+public static bool isPointOnPlane(Vector3 point, Vector3 planePoint1, Vector3 planePoint2, Vector3 planePoint3){
+	Plane plane = createPlaneFromPoints(Vector3 point1, Vector3 point2, Vector3 point3);
+	return isPointOnPlane(point, plane.normal, plane.ClosestPointOnPlane(Vector3.zero));
+}
