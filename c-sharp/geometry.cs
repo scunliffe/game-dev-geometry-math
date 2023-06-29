@@ -2,7 +2,6 @@
  * 2D Methods
  *
  */
-
 bool isPointOnLine2D(Vector2 point, Vector2 lineStart, Vector2 lineEnd){
     float epsilon = 0.0001f;
     float dx = lineEnd.x - lineStart.x;
@@ -17,12 +16,33 @@ bool isPointOnLine2D(Vector2 point, Vector2 lineStart, Vector2 lineEnd){
 
 
 
+public enum SideOfLine{
+    Right = -1,
+    OnTheLine = 0,
+    Left = 1
+}
+
+public static SideOfLine getPointSideOfLine2D(Vector2 point, Vector2 lineStart, Vector2 lineEnd){
+    float epsilon = 0.0001f;
+    float dx = lineEnd.x - lineStart.x;
+    float dy = lineEnd.y - lineStart.y;
+    float t = (point.x - lineStart.x) * dy - (point.y - lineStart.y) * dx;
+    if(Mathf.Abs(t) < epsilon){
+        return SideOfLine.OnTheLine;
+		} else if (t > 0){
+        return SideOfLine.Left;
+		} else {
+        return SideOfLine.Right;
+		}
+}
+
+
+
+
 /*
  * 3D Methods
  *
  */
-
-
 bool isPointOnLine3D(Vector3 point, Vector3 lineStart, Vector3 lineEnd){
     float epsilon = 0.0001f;
     float dx = lineEnd.x - lineStart.x;
