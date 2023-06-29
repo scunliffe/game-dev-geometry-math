@@ -261,3 +261,20 @@ public static Bounds getBoundsForPoints(Vector3[] points){
 	}
 	return bounds;
 }
+
+public enum SideOfPlane{
+	Below = -1,
+	OnThePlane = 0,
+	Above = 1
+}
+
+public static SideOfPlane getPointSideOfPlane(Vector3 point, Plane plane){
+	float distance = plane.GetDistanceToPoint(point);
+	if(distance == 0){
+		return SideOfPlane.OnThePlane;
+	} else if(distance > 0){
+		return SideOfPlane.Above;
+	} else {
+		return SideOfPlane.Below;
+	}
+}
