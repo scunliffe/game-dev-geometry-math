@@ -43,6 +43,26 @@ public static bool isPointOnLine2D(Vector2 point, Vector2 lineStart, Vector2 lin
 	return Mathf.Abs(t) < epsilon;
 }
 
+public static Tuple<Vector2, Vector2> getClosestPoints(Vector2[] points){
+	if(points.Length < 2){
+		return null;
+	}
+	Vector2 closest1 = points[0];
+	Vector2 closest2 = points[1];
+	float closestDistance = Vector2.Distance(closest1, closest2);
+	for(int i=0;i<points.Length-1;i++){
+		for(int j = i + 1; j < points.Length; j++){
+			float distance = Vector2.Distance(points[i], points[j]);
+			if(distance < closestDistance){
+				closestDistance = distance;
+				closest1 = points[i];
+				closest2 = points[j];
+			}
+		}
+	}
+	return new Tuple<Vector2, Vector2>(closest1, closest2);
+}
+
 
 
 
@@ -72,18 +92,18 @@ public static bool isPointInsideRect(Vector2 point, Rect rect){
 }
 
 public static bool isPointInTriangle(Vector3 point, Vector3 trianglePointA, Vector3 trianglePointB, Vector3 trianglePointC){
-    Vector3 d, e;
-    double w1, w2;
-    d = trianglePointB - trianglePointA;
-    e = trianglePointC - trianglePointA;
-    if(Mathf.Approximately(e.y, 0)){
-        w1 = (point.x - trianglePointA.x) / d.x;
-        w2 = (point.y - trianglePointA.y) / e.y;
-    } else {
-        w1 = (point.y - trianglePointA.y) / e.y;
-        w2 = (point.x - trianglePointA.x) / d.x;
-    }
-    return (w1 + w2 <= 1);
+	Vector3 d, e;
+	double w1, w2;
+	d = trianglePointB - trianglePointA;
+	e = trianglePointC - trianglePointA;
+	if(Mathf.Approximately(e.y, 0)){
+		w1 = (point.x - trianglePointA.x) / d.x;
+		w2 = (point.y - trianglePointA.y) / e.y;
+	} else {
+		w1 = (point.y - trianglePointA.y) / e.y;
+		w2 = (point.x - trianglePointA.x) / d.x;
+	}
+	return (w1 + w2 <= 1);
 }
 
 
@@ -157,6 +177,26 @@ public static Vector2 getLineIntersection(Vector2 line1Start, Vector2 line1End, 
 	return intersection;
 }
 
+public static Tuple<Vector3, Vector3> getClosestPoints(Vector3[] points){
+	if(points.Length < 2){
+		return null;
+	}
+	Vector2 closest1 = points[0];
+	Vector2 closest2 = points[1];
+	float closestDistance = Vector3.Distance(closest1, closest2);
+	for(int i=0;i<points.Length-1;i++){
+		for(int j = i + 1; j < points.Length; j++){
+			float distance = Vector3.Distance(points[i], points[j]);
+			if(distance < closestDistance){
+				closestDistance = distance;
+				closest1 = points[i];
+				closest2 = points[j];
+			}
+		}
+	}
+	return new Tuple<Vector3, Vector3>(closest1, closest2);
+}
+
 public static bool doLinesIntersect(Vector2 line1Start, Vector2 line1End, Vector2 line2Start, Vector2 line2End){
 	return (getLineIntersection(line1Start, line1End, line2Start, line2End) != null);
 }
@@ -181,9 +221,9 @@ public static bool isPointOnPlane(Vector3 point, Vector3 planePoint1, Vector3 pl
 
 // TODO: Rare, but if the line is parallel to the plane, this should return null
 public static Vector3 getIntersectionPointOfLineAndPlane(Vector3 point1, Vector3 point2, Plane plane){
-    Vector3 lineDirection = point2 - point1;
-    float distance;
-    Ray ray = new Ray(point1, lineDirection);
-    plane.Raycast(ray, out distance);
-    return ray.GetPoint(distance);
+	Vector3 lineDirection = point2 - point1;
+	float distance;
+	Ray ray = new Ray(point1, lineDirection);
+	plane.Raycast(ray, out distance);
+	return ray.GetPoint(distance);
 }
