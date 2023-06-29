@@ -71,6 +71,21 @@ public static bool isPointInsideRect(Vector2 point, Rect rect){
 	return rect.Contains(point);
 }
 
+public static bool isPointInTriangle(Vector3 point, Vector3 trianglePointA, Vector3 trianglePointB, Vector3 trianglePointC){
+    Vector3 d, e;
+    double w1, w2;
+    d = trianglePointB - trianglePointA;
+    e = trianglePointC - trianglePointA;
+    if(Mathf.Approximately(e.y, 0)){
+        w1 = (point.x - trianglePointA.x) / d.x;
+        w2 = (point.y - trianglePointA.y) / e.y;
+    } else {
+        w1 = (point.y - trianglePointA.y) / e.y;
+        w2 = (point.x - trianglePointA.x) / d.x;
+    }
+    return (w1 + w2 <= 1);
+}
+
 
 
 
