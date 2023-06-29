@@ -27,3 +27,7 @@ Although my focus here is in C#, for Unity development, if this is of any value 
  5. Determine the normal for a plane
  6. Determine if 2 lines intersect, and if so where
  7. Determine where a line intersects a plane
+
+
+Yo! This is awesome, but what gives? camelCase method names, OTB brace style, and tabs for indentation?... this isn't the C# way!
+Yup, this was intentional. I come from a Java/JavaScript world where methods start lowercase and its just so much easier for me to work with... and well the brace/indentaion styling are just my preferences.
