@@ -163,3 +163,12 @@ public static bool isPointOnPlane(Vector3 point, Vector3 planePoint1, Vector3 pl
 	Plane plane = createPlaneFromPoints(Vector3 point1, Vector3 point2, Vector3 point3);
 	return isPointOnPlane(point, plane.normal, plane.ClosestPointOnPlane(Vector3.zero));
 }
+
+// TODO: Rare, but if the line is parallel to the plane, this should return null
+public static Vector3 getIntersectionPointOfLineAndPlane(Vector3 point1, Vector3 point2, Plane plane){
+    Vector3 lineDirection = point2 - point1;
+    float distance;
+    Ray ray = new Ray(point1, lineDirection);
+    plane.Raycast(ray, out distance);
+    return ray.GetPoint(distance);
+}
