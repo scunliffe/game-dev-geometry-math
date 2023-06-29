@@ -185,7 +185,7 @@ public static Tuple<Vector3, Vector3> getClosestPoints(Vector3[] points){
 	Vector2 closest2 = points[1];
 	float closestDistance = Vector3.Distance(closest1, closest2);
 	for(int i=0;i<points.Length-1;i++){
-		for(int j = i + 1; j < points.Length; j++){
+		for(int j=i+1;j<points.Length;j++){
 			float distance = Vector3.Distance(points[i], points[j]);
 			if(distance < closestDistance){
 				closestDistance = distance;
@@ -219,6 +219,26 @@ public static bool isPointOnPlane(Vector3 point, Vector3 planePoint1, Vector3 pl
 	return isPointOnPlane(point, plane.normal, plane.ClosestPointOnPlane(Vector3.zero));
 }
 
+public Bounds createBounds(Vector3 lowerBound, Vector3 upperBound){
+	Vector3 center = (lowerBound + upperBound) / 2f;
+	Vector3 size = new Vector3(Mathf.Abs(lowerBound.x - upperBound.x), Mathf.Abs(lowerBound.y - upperBound.y), Mathf.Abs(lowerBound.z - upperBound.z));
+	return new Bounds(center, size);
+}
+
+public static bool isPointInBounds(Vector3 point, Bounds bounds){
+	return bounds.Contains(point);
+}
+
+public static bool isPointInBounds(Vector3 point, Vector3 lowerBound, Vector3 upperBound){
+	return isPointInBounds(point, createBounds(lowerBound, upperBound));
+}
+
+public static bool isPointWithinDistance(Vector3 startPoint, Vector3 targetPoint, float distance){
+	return (distance(startPoint, targetPoint) <= distance);
+}
+
+
+
 // TODO: Rare, but if the line is parallel to the plane, this should return null
 public static Vector3 getIntersectionPointOfLineAndPlane(Vector3 point1, Vector3 point2, Plane plane){
 	Vector3 lineDirection = point2 - point1;
@@ -226,4 +246,13 @@ public static Vector3 getIntersectionPointOfLineAndPlane(Vector3 point1, Vector3
 	Ray ray = new Ray(point1, lineDirection);
 	plane.Raycast(ray, out distance);
 	return ray.GetPoint(distance);
+}
+
+
+public static Bounds getBoundsForPoints(Vector3[] points){
+	Bounds bounds = new Bounds(points[0], Vector3.zero);
+	for(int i=1;i<points.Length;i++){
+		bounds.Encapsulate(points[i]);
+	}
+	return bounds;
 }
