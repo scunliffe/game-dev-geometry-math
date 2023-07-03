@@ -6,7 +6,7 @@ public static bool distance(Vector2 point1, Vector2 point2){
 	return Vector2.Distance(point1, point2);
 }
 
-public static Vector3 getMidpoint(Vector2 point1, Vector2 point2){
+public static Vector2 getMidpoint(Vector2 point1, Vector2 point2){
 	return (point1 + point2) / 2f;
 }
 
