@@ -173,6 +173,10 @@ public static Vector2 getLineIntersection(Vector2 line1Start, Vector2 line1End, 
 	return intersection;
 }
 
+public static Vector3 getCentroidOfTriangle(Vector3 p1, Vector3 p2, Vector3 p3){
+	return (p1 + p2 + p3) / 3f;
+}
+
 public static Tuple<Vector3, Vector3> getClosestPoints(Vector3[] points){
 	if(points.Length < 2){
 		return null;
