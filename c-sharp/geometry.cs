@@ -10,6 +10,10 @@ public static Vector2 getMidpoint(Vector2 point1, Vector2 point2){
 	return (point1 + point2) / 2f;
 }
 
+public static float getAngleOfLine(Vector2 p1, Vector2 p2){
+	return Mathf.Atan2(p2.y - p1.y, p2.x - p1.x) * Mathf.Rad2Deg;
+}
+
 public static float getAngleBetweenLines(Vector2 line1Start, Vector2 line1End, Vector2 line2Start, Vector2 line2End){
 	Vector2 line1Dir = (line1End - line1Start).normalized;
 	Vector2 line2Dir = (line2End - line2Start).normalized;
