@@ -2,7 +2,7 @@
  * 2D Methods
  *
  */
-public static bool distance(Vector2 point1, Vector2 point2){
+public static bool getDistance(Vector2 point1, Vector2 point2){
 	return Vector2.Distance(point1, point2);
 }
 
@@ -114,7 +114,7 @@ public static bool isPointInTriangle(Vector3 point, Vector3 trianglePointA, Vect
  * 3D Methods
  *
  */
-public static float distance(Vector3 point1, Vector3 point2){
+public static float getDistance(Vector3 point1, Vector3 point2){
 	return Vector3.Distance(point1, point2);
 }
 
