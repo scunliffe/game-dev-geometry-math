@@ -61,6 +61,10 @@ public static Tuple<Vector2, Vector2> getClosestPoints(Vector2[] points){
 	return new Tuple<Vector2, Vector2>(closest1, closest2);
 }
 
+public static Vector2 getCentroidOfTriangle(Vector2 p1, Vector2 p2, Vector2 p3){
+	return (p1 + p2 + p3) / 3f;
+}
+
 public enum SideOfLine{
 	Right = -1,
 	OnTheLine = 0,
