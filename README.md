@@ -12,7 +12,7 @@ Although my focus here is in C#, for Unity development, if this is of any value 
 ## Key Desired Methods
 
 ### 2D
- 1. Determine which side of a line (2D) a point is on
+ 1. Determine [which side of a line (2D) a point is on](https://github.com/scunliffe/game-dev-geometry-math/blob/main/c-sharp/geometry.cs#L70)
  2. Determine if a point is inside a (2D) shape (rectangle, triangle, circle, polygon)
  3. Determine the centroid of a (2D) shape (rectangle, triangle, circle, polygon)
  4. Determine the normal for a line
