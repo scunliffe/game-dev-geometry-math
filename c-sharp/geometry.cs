@@ -2,7 +2,6 @@
  * 2D Methods
  *
  */
-
 public static bool distance(Vector2 point1, Vector2 point2){
 	return Vector2.Distance(point1, point2);
 }
@@ -30,7 +29,6 @@ public static Vector2 getNormalOfLine(Vector2 point1, Vector2 point2){
 public static bool isPointInsideCircle(Vector2 point, Vector2 center, float radius){
 	return Vector2.Distance(point, center) < radius;
 }
-
 
 public static bool isPointOnLine2D(Vector2 point, Vector2 lineStart, Vector2 lineEnd){
 	float epsilon = 0.0001f;
@@ -63,9 +61,6 @@ public static Tuple<Vector2, Vector2> getClosestPoints(Vector2[] points){
 	return new Tuple<Vector2, Vector2>(closest1, closest2);
 }
 
-
-
-
 public enum SideOfLine{
 	Right = -1,
 	OnTheLine = 0,
@@ -85,7 +80,6 @@ public static SideOfLine getPointSideOfLine2D(Vector2 point, Vector2 lineStart, 
 		return SideOfLine.Right;
 	}
 }
-
 
 public static bool isPointInsideRect(Vector2 point, Rect rect){
 	return rect.Contains(point);
@@ -108,17 +102,10 @@ public static bool isPointInTriangle(Vector3 point, Vector3 trianglePointA, Vect
 
 
 
-
-
-
-
-
-
 /*
  * 3D Methods
  *
  */
-
 public static float distance(Vector3 point1, Vector3 point2){
 	return Vector3.Distance(point1, point2);
 }
@@ -242,8 +229,6 @@ public static bool isPointWithinDistance(Vector3 startPoint, Vector3 targetPoint
 	return (distance(startPoint, targetPoint) <= distance);
 }
 
-
-
 // TODO: Rare, but if the line is parallel to the plane, this should return null
 public static Vector3 getIntersectionPointOfLineAndPlane(Vector3 point1, Vector3 point2, Plane plane){
 	Vector3 lineDirection = point2 - point1;
@@ -252,7 +237,6 @@ public static Vector3 getIntersectionPointOfLineAndPlane(Vector3 point1, Vector3
 	plane.Raycast(ray, out distance);
 	return ray.GetPoint(distance);
 }
-
 
 public static Bounds getBoundsForPoints(Vector3[] points){
 	Bounds bounds = new Bounds(points[0], Vector3.zero);
