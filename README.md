@@ -22,7 +22,7 @@ Although my focus here is in C#, for Unity development, if this is of any value 
 ### 3D
  1. Determine if a point is within a (3D) shape (rectangular prism/cuboid, sphere, cone, cylinder, pyramid)
  2. Determine which side of (3D) plane a point is on
- 3. Determine the midpoint of a line
+ 3. Determine the [midpoint of a line](https://github.com/scunliffe/game-dev-geometry-math/blob/main/c-sharp/geometry.cs#L113)
  4. Determine if a point is on a line (with a fuzz factor)
  5. Determine the normal for a plane
  6. Determine if 2 lines intersect, and if so where
