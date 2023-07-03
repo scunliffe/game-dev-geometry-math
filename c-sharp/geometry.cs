@@ -65,6 +65,10 @@ public static Vector2 getCentroidOfTriangle(Vector2 p1, Vector2 p2, Vector2 p3){
 	return (p1 + p2 + p3) / 3f;
 }
 
+public static Vector3 getCentroidOfQuad(Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4){
+	return (p1 + p2 + p3 + p4) / 4f;
+}
+
 public enum SideOfLine{
 	Right = -1,
 	OnTheLine = 0,
