@@ -17,7 +17,7 @@ Although my focus here is in C#, for Unity development, if this is of any value 
  3. Determine the centroid of a (2D) shape (rectangle, triangle, circle, polygon)
  4. Determine the normal for a line
  5. Determine the [angle between 2 lines](https://github.com/scunliffe/game-dev-geometry-math/blob/main/c-sharp/geometry.cs#L13)
- 6. Determine if 2 lines intersect, and if so where
+ 6. Determine [if 2 lines intersect, and if so where](https://github.com/scunliffe/game-dev-geometry-math/blob/main/c-sharp/geometry.cs#L142)
 
 ### 3D
  1. Determine if a point is within a (3D) shape (rectangular prism/cuboid, sphere, cone, cylinder, pyramid)
